@@ -33,9 +33,9 @@ fun main() {
     println("17- Strings-2")
     println("18- Strings-3")
     println("---------")
-    println("16- Arrays-1")
-    println("17- Arrays-2")
-    println("18- Arrays-3")
+    println("19- Arrays-1")
+    println("20- Arrays-2")
+    println("21- Arrays-3")
 
     val opcao = readLine()?.toInt()
 
@@ -58,6 +58,9 @@ fun main() {
         16 -> ativ16()
         17 -> ativ17()
         18 -> ativ18()
+        19 -> ativ19()
+        20 -> ativ20()
+        21 -> ativ21()
         else -> println("Opção inválida")
     }
 }
@@ -260,22 +263,81 @@ fun ativ18() {
             quantidadeVogais++
         }
     }
-    println("A frase digitada possui $quantidadeVogais vogais.")
+    println("A -$frase$ possui $quantidadeVogais vogais.")
 }
 //string
 fun ativ19(){
-    println("1 - Faça um loop for que imprima todos os números de 1 a 10:")
+    println("1 - Escreva um programa que crie um array de 10 números inteiros aleatórios e imprima o maior número do array.")
+    val a = IntArray(10) { (0..100).random() }
+    var max = a[0]
 
+    for (num in a) {
+        if (num > max) {
+            max = num
+        }
+    }
+
+    println("O maior algoritimo é: $max")
 
 }
 
 fun ativ20(){
-    println("2 - Faça um loop for que imprima todos os números pares de 0 a 20:")
+    println("2 - Escreva um programa que crie um array de 10 números inteiros digitados pelo usuário e imprima a média dos números do array.")
+    val a = IntArray(10)
 
+    for (i in 0 until a.size) {
+        print("Digite o ${i+1}º número: ")
+        a[i] = readLine()?.toInt() ?: 0
+    }
+
+    val med = a.average()
+
+    println("A média dos números  é: $med")
 
 }
 fun ativ21(){
-    println("3 - Faça um loop for que imprima todos os números ímpares de 10 a 0:")
+    println("3 - Escreva um programa que crie um array de 10 strings com nomes de frutas e imprima somente as frutas que começam com a letra \"a\" usando loop for e if.")
+    val futa = arrayOf("banana", "maçã", "abacaxi", "laranja", "manga", "uva", "goiaba", "acerola", "abacate", "limão")
+    for (futa in futa) {
+        if (futa.startsWith("a")) {
+            println(futa)
+        }
+    }
+}
+//DESAFIO
+//Crie um programa em Kotlin que permita ao usuário digitar o nome e a idade de várias
+//pessoas, armazenando essas informações em um array de objetos Pessoa. O
+//programa deve ter as seguintes funcionalidades:
+//
+//Exercícios - semana 2 4
+//1 - Permitir ao usuário adicionar uma nova pessoa ao array, informando o nome e a
+//idade.
+//2 - Exibir a lista de todas as pessoas adicionadas ao array, mostrando o nome e a
+//idade de cada uma.
+//3 - Exibir a média de idade das pessoas adicionadas ao array.
+//4 - Permitir ao usuário buscar uma pessoa pelo nome, exibindo o nome e a idade
+//correspondentes.
+//5 - Permitir ao usuário remover uma pessoa pelo nome, atualizando o array e exibindo
+//a lista atualizada.
+//É aconselhado utilizar os conceitos de loop while, loop do-while, loop for, range,
+//continue, break & repeat, string e array.
+
+fun Desafio(){
+    class Pessoa(val name: String, val age: Int)
+    val pessoas = mutableListOf<Pessoa>()
+
+    while (true) {
+        println("Selecione a opção que vocẽ deseja")
+        println("1 - Adicionar Pessoa")
+        println("2 - Lista de Pessoas")
+        println("3 - Média idade das pessoas")
+        println("4 - Busca por nome")
+        println("5 - Excluir por nome")
+        println("6 - Encerrar")
+
+
+    }
+
 
 }
 
