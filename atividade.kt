@@ -36,6 +36,8 @@ fun main() {
     println("19- Arrays-1")
     println("20- Arrays-2")
     println("21- Arrays-3")
+    println("---------")
+    println("22- DESAFIO")
 
     val opcao = readLine()?.toInt()
 
@@ -61,6 +63,7 @@ fun main() {
         19 -> ativ19()
         20 -> ativ20()
         21 -> ativ21()
+        22 -> Desafio()
         else -> println("Opção inválida")
     }
 }
@@ -323,8 +326,8 @@ fun ativ21(){
 //continue, break & repeat, string e array.
 
 fun Desafio(){
-    class Pessoa(val name: String, val age: Int)
-    val pessoas = mutableListOf<Pessoa>()
+    class Person(val name: String, val age: Int)
+    val people = mutableListOf<Person>()
 
     while (true) {
         println("Selecione a opção que vocẽ deseja")
@@ -333,13 +336,65 @@ fun Desafio(){
         println("3 - Média idade das pessoas")
         println("4 - Busca por nome")
         println("5 - Excluir por nome")
-        println("6 - Encerrar")
+        println("0 - Encerrar")
+        when (readLine()?.toIntOrNull()) {
+            1 -> {
+                print("Digite o nome da pessoa: ")
+                val name = readLine() ?: continue
+                print("Digite a idade da pessoa: ")
+                val age = readLine()?.toIntOrNull() ?: continue
+                val person = Person(name, age)
+                people.add(person)
+            }
+            2 -> {
+                println("Lista de pessoas:")
 
+                for (person in people) {
+                    println("${person.name}, ${person.age} anos")
+                }
+            }
+            3 -> {
+                val totalAge = people.fold(0) { acc, person -> acc + person.age }
+                val averageAge = totalAge.toFloat() / people.size
+
+                println("Média de idade: ${averageAge}")
+            }
+            4 -> {
+                print("Digite o nome da pessoa que deseja buscar: ")
+                val name = readLine() ?: continue
+
+                val person = people.find { it.name == name }
+                if (person != null) {
+                    println("${person.name}, ${person.age} anos")
+                } else {
+                    println("Não encontrado.")
+                }
+            }
+            5 -> {
+                print("Digite o nome da pessoa que deseja remover: ")
+                val name = readLine() ?: continue
+
+                val removed = people.removeAll { it.name == name }
+                if (removed) {
+                    println("Pessoa deletada com sucesso.")
+                } else {
+                    println("Não encontrado.")
+                }
+            }
+            0 -> {
+                println("Saindo...")
+                return
+            }
+            else -> {
+                println("Inválido.")
+            }
+        }
+    }
 
     }
 
 
-}
+
 
 
 
